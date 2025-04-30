@@ -8,13 +8,9 @@ const Progress = () => {
 
   const getFilteredWorkouts = () => {
     let filtered = workouts;
-
-    // Apply workout type filter
     if (filter !== 'all') {
       filtered = filtered.filter(workout => workout.type === filter);
     }
-
-    // Apply time filter
     const now = new Date();
     switch (timeFilter) {
       case 'week':
@@ -47,11 +43,9 @@ const Progress = () => {
 
     return filtered;
   };
-
   const filteredWorkouts = getFilteredWorkouts();
   const totalDuration = filteredWorkouts.reduce((sum, workout) => sum + Number(workout.duration), 0);
   const workoutTypes = [...new Set(workouts.map(w => w.type))];
-
   const getWorkoutStats = (type) => {
     const typeWorkouts = filteredWorkouts.filter(w => w.type === type);
     const total = typeWorkouts.reduce((sum, w) => sum + Number(w.duration), 0);
@@ -61,7 +55,6 @@ const Progress = () => {
       percentage: (total / totalDuration) * 100 || 0
     };
   };
-
   return (
     <div className="animate-fade-in">
       <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
@@ -163,5 +156,4 @@ const Progress = () => {
     </div>
   );
 };
-
 export default Progress; 
