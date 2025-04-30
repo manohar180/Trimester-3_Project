@@ -3,16 +3,12 @@ import { API_CONFIG } from '../config/api';
 export const weatherService = {
   async getCurrentWeather() {
     try {
-      // Check if API key is available
       if (!API_CONFIG.WEATHER.API_KEY) {
         console.error('Weather API key is missing');
         throw new Error('Weather API key is not configured');
       }
-
       console.log('API Key:', API_CONFIG.WEATHER.API_KEY);
       console.log('Base URL:', API_CONFIG.WEATHER.BASE_URL);
-
-      // First try to get user's location
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
@@ -36,8 +32,6 @@ export const weatherService = {
       return data;
     } catch (error) {
       console.error('Error in getCurrentWeather:', error);
-      
-      // If geolocation fails or API key is invalid, fall back to a default location
       try {
         console.log('Falling back to default location (New York)...');
         const fallbackUrl = `${API_CONFIG.WEATHER.BASE_URL}/weather?q=New York&units=metric&appid=${API_CONFIG.WEATHER.API_KEY}`;
@@ -50,7 +44,6 @@ export const weatherService = {
           console.error('Fallback weather API error:', errorData);
           throw new Error(`Weather API error: ${response.status} - ${errorData.message || 'Unknown error'}`);
         }
-
         const data = await response.json();
         console.log('Fallback weather data received:', data);
         return data;
@@ -60,7 +53,6 @@ export const weatherService = {
       }
     }
   },
-
   getExerciseSuggestion(temperature) {
     if (!temperature) {
       return {
