@@ -223,7 +223,7 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* Popular Workouts Section */}
+      {}
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
           Popular Workouts
@@ -266,8 +266,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-
-      {/* Fitness Goals Section */}
+      {}
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
           Fitness Goals
