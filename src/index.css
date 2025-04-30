@@ -30,8 +30,6 @@
     @apply bg-white bg-opacity-20;
   }
 }
-
-/* Custom animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -57,8 +55,6 @@
 .animate-pulse-slow {
   animation: pulse 2s ease-in-out infinite;
 }
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -74,8 +70,6 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gradient-to-b from-indigo-600 to-purple-600;
 }
-
-/* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
   @apply bg-gray-800;
 }
@@ -87,8 +81,6 @@
 .dark ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600;
 }
-
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: #374151 #1a1a1a;
