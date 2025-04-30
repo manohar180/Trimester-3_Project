@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useWorkout } from '../context/WorkoutContext';
-
 const Settings = () => {
   const { settings, updateSettings, personalInfo, updatePersonalInfo } = useWorkout();
   const [localPersonalInfo, setLocalPersonalInfo] = useState(personalInfo);
@@ -8,28 +7,22 @@ const Settings = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-
   useEffect(() => {
     setLocalPersonalInfo(personalInfo);
   }, [personalInfo]);
-
   const handleToggle = (key) => {
     updateSettings({ [key]: !settings[key] });
   };
-
   const handleUnitChange = (e) => {
     updateSettings({ units: e.target.value });
   };
-
   const handlePersonalInfoChange = (e) => {
     const { name, value } = e.target;
     setLocalPersonalInfo(prev => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
-
   const validateForm = () => {
     const newErrors = {};
     if (!localPersonalInfo.name.trim()) {
@@ -68,19 +61,15 @@ const Settings = () => {
     updatePersonalInfo(localPersonalInfo);
     setSaveSuccess(true);
     setIsSaving(false);
-
-    // Hide success message after 3 seconds
     setTimeout(() => {
       setSaveSuccess(false);
     }, 3000);
   };
-
   return (
     <div className="max-w-md mx-auto animate-fade-in">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
         Settings
       </h1>
-
       {showSuccess && (
         <div className="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg">
           <p className="text-lg font-semibold">Welcome to FitTrack, {localPersonalInfo.name}!</p>
@@ -93,7 +82,6 @@ const Settings = () => {
           <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
             Personal Information
           </h2>
-          
           <form onSubmit={handlePersonalInfoSubmit} className="space-y-4">
             <div>
               <label className="block text-gray-700 dark:text-gray-300 mb-2">
