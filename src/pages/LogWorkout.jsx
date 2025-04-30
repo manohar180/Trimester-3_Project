@@ -60,7 +60,6 @@ const LogWorkout = () => {
   };
 
   useEffect(() => {
-    // Get workout type from URL parameters
     const params = new URLSearchParams(location.search);
     const type = params.get('type');
     if (type) {
@@ -70,7 +69,6 @@ const LogWorkout = () => {
       }));
     }
   }, [location]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -78,7 +76,6 @@ const LogWorkout = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     addWorkout(formData);
@@ -146,7 +143,7 @@ const LogWorkout = () => {
         Log Workout
       </h1>
 
-      {/* Timer Section */}
+      {}
       <div className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <div className="text-center">
           <div className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
@@ -179,8 +176,7 @@ const LogWorkout = () => {
           </div>
         </div>
       </div>
-
-      {/* Quick Templates */}
+      {}
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
           Quick Templates
@@ -283,7 +279,7 @@ const LogWorkout = () => {
           </div>
         </div>
 
-        {/* Strength Training Fields */}
+        {}
         {(formData.type === 'Weightlifting' || formData.type === 'Bodyweight' || formData.type === 'CrossFit') && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
@@ -332,7 +328,7 @@ const LogWorkout = () => {
           </div>
         )}
 
-        {/* Cardio Fields */}
+        {}
         {(formData.type === 'Running' || formData.type === 'Cycling' || formData.type === 'Swimming') && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
